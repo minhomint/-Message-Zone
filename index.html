@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            background: #f5f7fa;
             min-height: 100vh;
             padding: 20px;
         }
@@ -25,25 +25,25 @@
 
         .header {
             text-align: center;
-            color: white;
+            color: #333;
             margin-bottom: 40px;
             padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #4ecdc4;
         }
 
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #4ecdc4;
         }
 
         .header p {
             font-size: 1.2em;
-            opacity: 0.95;
             margin-bottom: 20px;
+            color: #666;
         }
 
         .tips-box {
@@ -93,15 +93,15 @@
         }
 
         .section-title {
-            color: white;
+            color: #333;
             font-size: 1.8em;
             margin-bottom: 20px;
             padding: 15px 25px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 15px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #4ecdc4;
         }
 
         .special-badge {
@@ -206,6 +206,10 @@
             background: linear-gradient(90deg, #ff1493 0%, #ff69b4 100%);
         }
 
+        .special-section .section-title {
+            border-left: 4px solid #ff1493;
+        }
+
         .special-section .btn-request {
             background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
             box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
@@ -245,6 +249,7 @@
             .tips-box li {
                 font-size: 0.88em;
                 padding: 6px 0;
+                padding-left: 22px;
             }
 
             .section-title {
@@ -272,12 +277,12 @@
 
         .footer {
             text-align: center;
-            color: white;
+            color: #666;
             margin-top: 50px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
     </style>
 </head>
@@ -301,7 +306,7 @@
 
         <!-- 2시 프로그램 특별 섹션 -->
         <div class="section special-section">
-            <p style="color: white; text-align: center; margin-bottom: 15px; font-size: 1em; background: rgba(255, 255, 255, 0.25); padding: 12px; border-radius: 10px; border: 2px solid #ff1493; box-shadow: 0 2px 10px rgba(255, 20, 147, 0.3);">
+            <p style="color: #333; text-align: center; margin-bottom: 15px; font-size: 1em; background: white; padding: 12px; border-radius: 10px; border: 2px solid #ff1493; box-shadow: 0 2px 10px rgba(255, 20, 147, 0.15);">
                 💬 <strong style="color: #ff1493; font-size: 1.05em;">메시지를 직접 입력해 주세요</strong>
             </p>
             <h2 class="section-title">
@@ -472,7 +477,7 @@
 
         <div class="footer">
             <p style="color: #ff1493;">💌 민트팬 여러분의 성원이 큰 힘이 됩니다 💌</p>
-            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
                 클릭하시면 문자 앱이 자동으로 열립니다
             </p>
         </div>
