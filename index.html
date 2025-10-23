@@ -1,0 +1,492 @@
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 문자 ON 📻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .tips-box {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .tips-box h3 {
+            color: #ff1493;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tips-box li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .tips-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .special-badge {
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            margin-left: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-number {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+
+        .card-logo {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .sms-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-request {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn-request:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
+        }
+
+        .special-section .card::before {
+            background: linear-gradient(90deg, #ff1493 0%, #ff69b4 100%);
+        }
+
+        .special-section .btn-request {
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .special-section .btn-request:hover {
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .message-preview {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .tips-box {
+                padding: 15px;
+            }
+
+            .tips-box h3 {
+                font-size: 1em;
+            }
+
+            .tips-box li {
+                font-size: 0.88em;
+                padding: 6px 0;
+            }
+
+            .section-title {
+                font-size: 1.2em;
+                padding: 12px 18px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .card h3 {
+                font-size: 1.05em;
+            }
+
+            .card-logo {
+                height: 90px;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📻 실시간 문자 ON</h1>
+            <p>신곡 나왔어요🎶 바로 신청 GO!</p>
+            
+            <div class="tips-box">
+                <h3>💡 문자 신청 꿀팁</h3>
+                <ul>
+                    <li><strong>생방송 중</strong>에 보내야 실시간 반응 가능해요</li>
+                    <li>방송 진행 중인 <strong>내용, DJ 멘트, 주제</strong>와 연결해서 보내면 읽힐 확률 UP!</li>
+                    <li>긴 사연보다 <strong>공감되는 한 줄 + 신청곡</strong>이 효과적이에요</li>
+                    <li>직접 홍보보다 일상에 자연스럽게 녹이기<br>
+                    <em>"출근길마다 이 노래 듣는데 오늘 라디오에서 듣고 싶어요🚗💨"</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2시 프로그램 특별 섹션 -->
+        <div class="section special-section">
+            <h2 class="section-title">
+                ⭐ 2시 프로그램 
+                <span class="special-badge">SPECIAL</span>
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <a href="sms:%239070?body=" class="sms-link">
+                        <img src="https://www.ifm.kr/uploads/files/202402/15/23d1492cb3a87faf207cc2ac91dd9919.png" alt="언제나 좋은날 채리입니다" class="card-logo">
+                        <h3>
+                            언제나 좋은날 채리입니다
+                            <span class="card-number">#9070</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%238001?body=" class="sms-link">
+                        <img src="https://img.imbc.com/broad/radio/fm/hurray/v2/setting/homepage/__icsFiles/afieldfile/2022/05/11/B9_640x360.jpg" alt="MBC 2시만세" class="card-logo">
+                        <h3>
+                            MBC 2시만세
+                            <span class="card-number">#8001</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TBN 교통방송 섹션 -->
+        <div class="section">
+            <h2 class="section-title">🚗 TBN 교통방송 전국 네트워크</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <a href="sms:%230949?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_2.png" alt="부산TBN" class="card-logo">
+                        <h3>
+                            부산TBN
+                            <span class="card-number">#0949</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%230973?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_3.png" alt="광주TBN" class="card-logo">
+                        <h3>
+                            광주TBN
+                            <span class="card-number">#0973</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%231039?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_4.png" alt="대구TBN" class="card-logo">
+                        <h3>
+                            대구TBN
+                            <span class="card-number">#1039</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%236001?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_5.png" alt="대전TBN" class="card-logo">
+                        <h3>
+                            대전TBN
+                            <span class="card-number">#6001</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%235001?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_6.png" alt="경인TBN" class="card-logo">
+                        <h3>
+                            경인TBN
+                            <span class="card-number">#5001</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%231059?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_7.png" alt="강원TBN" class="card-logo">
+                        <h3>
+                            강원TBN
+                            <span class="card-number">#1059</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%231025?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_8.png" alt="전북TBN" class="card-logo">
+                        <h3>
+                            전북TBN
+                            <span class="card-number">#1025</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%231041?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_9.png" alt="울산TBN" class="card-logo">
+                        <h3>
+                            울산TBN
+                            <span class="card-number">#1041</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%239550?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_10.png" alt="경남TBN" class="card-logo">
+                        <h3>
+                            경남TBN
+                            <span class="card-number">#9550</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%233456?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_11.png" alt="경북TBN" class="card-logo">
+                        <h3>
+                            경북TBN
+                            <span class="card-number">#3456</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%231055?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_12.png" alt="제주TBN" class="card-logo">
+                        <h3>
+                            제주TBN
+                            <span class="card-number">#1055</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="sms:%231033?body=" class="sms-link">
+                        <img src="https://www.tbn.or.kr/images/common/logo_13.png" alt="충북TBN" class="card-logo">
+                        <h3>
+                            충북TBN
+                            <span class="card-number">#1033</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                        <div class="message-preview">💬 메시지를 직접 입력해 주세요</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+    <p style="color: #ff1493;">💌 팬 여러분의 성원이 큰 힘이 됩니다 💌</p>
+    <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+        클릭하시면 문자 앱이 자동으로 열립니다
+            </p>
+        </div>
+    </div>
+</body>
+</html>
