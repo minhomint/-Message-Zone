@@ -59,6 +59,34 @@
             color: #666;
         }
 
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .playlist-btn {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .playlist-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.5);
+        }
+
         .tips-box {
             background: rgba(255, 255, 255, 0.95);
             color: #333;
@@ -105,6 +133,66 @@
             margin-bottom: 40px;
         }
 
+        .on-air-section {
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.4);
+        }
+
+        .on-air-badge {
+            background: white;
+            color: #ff1493;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .on-air-badge::before {
+            content: "🔴 ";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.3; }
+        }
+
+        .on-air-section .section-title {
+            color: white;
+            border-left: none;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .on-air-section .card {
+            border: 3px solid white;
+        }
+
+        .on-air-section .time-slot-header {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .on-air-section .time-slot-header h2 {
+            color: #ff1493;
+        }
+
+        .on-air-section h3 {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #ff1493 !important;
+        }
+
+        .on-air-section .message-instruction {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: white;
+        }
+
         .section-title {
             color: #333;
             font-size: 1.8em;
@@ -117,20 +205,45 @@
             border-left: 4px solid #4ecdc4;
         }
 
-        .special-badge {
-            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+        .time-slot-header {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .time-slot-header h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .time-badge {
+            background: #f5f7fa;
+            color: #666;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.6em;
+        }
+
+        .live-badge {
+            background: #ff1493;
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.7em;
+            font-size: 0.6em;
             margin-left: 10px;
             font-weight: bold;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
 
         .cards-grid {
@@ -172,12 +285,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            line-height: 1.4;
         }
 
         .card-number {
             color: #4ecdc4;
             font-weight: bold;
             font-size: 0.85em;
+            white-space: nowrap;
         }
 
         .card-logo {
@@ -215,40 +332,136 @@
             box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
         }
 
-        .special-section .card::before {
-            background: linear-gradient(90deg, #ff1493 0%, #ff69b4 100%);
+        .time-9am .section-title {
+            border-left: 4px solid #9b59b6;
         }
 
-        .special-section .section-title {
+        .time-9am .card::before {
+            background: linear-gradient(90deg, #9b59b6 0%, #8e44ad 100%);
+        }
+
+        .time-9am .btn-request {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4);
+        }
+
+        .time-9am .btn-request:hover {
+            box-shadow: 0 6px 20px rgba(155, 89, 182, 0.6);
+        }
+
+        .time-12pm .section-title {
+            border-left: 4px solid #f39c12;
+        }
+
+        .time-12pm .card::before {
+            background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .time-12pm .btn-request {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+        }
+
+        .time-12pm .btn-request:hover {
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
+        }
+
+        .time-2pm .section-title {
             border-left: 4px solid #ff1493;
         }
 
-        .special-section .btn-request {
+        .time-2pm .card::before {
+            background: linear-gradient(90deg, #ff1493 0%, #ff69b4 100%);
+        }
+
+        .time-2pm .btn-request {
             background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
             box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
         }
 
-        .special-section .btn-request:hover {
+        .time-2pm .btn-request:hover {
             box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
         }
 
-        .message-preview {
-            background: #f8f9fa;
-            padding: 8px;
-            border-radius: 8px;
-            margin-top: 8px;
-            font-size: 0.85em;
+        .time-6pm .section-title {
+            border-left: 4px solid #3498db;
+        }
+
+        .time-6pm .card::before {
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .time-6pm .btn-request {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .time-6pm .btn-request:hover {
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+        }
+
+        .message-instruction {
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1em;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #ff1493;
+            box-shadow: 0 2px 10px rgba(255, 20, 147, 0.15);
+        }
+
+        .footer {
+            text-align: center;
             color: #666;
-            font-style: italic;
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-br {
+            display: none;
         }
 
         @media (max-width: 768px) {
+            .mobile-br {
+                display: inline;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 0;
+            }
+
+            .header {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
             .header h1 {
-                font-size: 1.6em;
+                font-size: 1.5em;
             }
 
             .header p {
+                font-size: 0.95em;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .playlist-btn {
                 font-size: 1em;
+                padding: 12px 25px;
+                width: 100%;
+                justify-content: center;
             }
 
             .tips-box {
@@ -263,6 +476,36 @@
                 font-size: 0.88em;
                 padding: 6px 0;
                 padding-left: 22px;
+                line-height: 1.5;
+            }
+
+            .on-air-badge {
+                font-size: 1.1em;
+                padding: 8px 20px;
+            }
+
+            .on-air-section {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+            }
+
+            .time-slot-header {
+                padding: 12px 15px;
+            }
+
+            .time-slot-header h2 {
+                font-size: 1.2em;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .time-badge {
+                font-size: 0.75em;
+            }
+
+            .section {
+                margin-bottom: 30px;
             }
 
             .section-title {
@@ -280,22 +523,43 @@
             }
 
             .card h3 {
-                font-size: 1.05em;
+                font-size: 1em;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .card-number {
+                font-size: 0.9em;
             }
 
             .card-logo {
-                height: 90px;
+                height: 80px;
             }
-        }
 
-        .footer {
-            text-align: center;
-            color: #666;
-            margin-top: 50px;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            .btn-request {
+                padding: 12px 20px;
+                font-size: 1em;
+                min-height: 44px;
+            }
+
+            .message-instruction {
+                font-size: 0.95em;
+                padding: 10px;
+            }
+
+            .footer {
+                padding: 20px 15px;
+                margin-top: 30px;
+            }
+
+            .footer p {
+                font-size: 0.95em !important;
+            }
+
+            .footer p:first-child {
+                font-size: 1.05em !important;
+            }
         }
     </style>
 </head>
@@ -304,6 +568,12 @@
         <div class="header">
             <h1>📻 실시간 문자 ON</h1>
             <p>신곡 나왔어요🎶 바로 신청 GO!</p>
+            
+            <div class="header-buttons">
+                <a href="https://minhomint.github.io/radioPLlist/" target="_blank" class="playlist-btn">
+                    🎵 선곡표 보기
+                </a>
+            </div>
             
             <div class="tips-box">
                 <h3>💡 문자 신청 꿀팁</h3>
@@ -317,197 +587,334 @@
             </div>
         </div>
 
-        <!-- 2시 프로그램 특별 섹션 -->
-        <div class="section special-section">
-            <p style="color: #333; text-align: center; margin-bottom: 15px; font-size: 1em; background: white; padding: 12px; border-radius: 10px; border: 2px solid #ff1493; box-shadow: 0 2px 10px rgba(255, 20, 147, 0.15);">
-                💬 <strong style="color: #ff1493; font-size: 1.05em;">메시지를 직접 입력해 주세요</strong>
-            </p>
-            <h2 class="section-title">
-                ⭐ 2시 프로그램 (매일 14:05 ~ 16:00)
-            </h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <a href="sms:%231061?body=" class="sms-link">
-                        <img src="https://programres.kbs.co.kr/r2024-0030/2024/3/20/1710914667050_511371.jpg" alt="KBS 은가은의 빛나는 트로트" class="card-logo">
-                        <h3>
-                            KBS 은가은의 빛나는 트로트
-                            <span class="card-number">#1061</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%238001?body=" class="sms-link">
-                        <img src="https://img.imbc.com/broad/radio/fm/hurray/v2/setting/homepage/__icsFiles/afieldfile/2022/05/11/B9_640x360.jpg" alt="MBC 박준형 박영진의 2시만세" class="card-logo">
-                        <h3>
-                            MBC 박준형 박영진의 2시만세
-                            <span class="card-number">#8001</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%239070?body=" class="sms-link">
-                        <img src="https://www.ifm.kr/uploads/files/202402/15/23d1492cb3a87faf207cc2ac91dd9919.png" alt="언제나 좋은날 채리입니다" class="card-logo">
-                        <h3>
-                            언제나 좋은날 채리입니다
-                            <span class="card-number">#9070</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- TBN 교통방송 섹션 -->
-        <div class="section">
-            <h2 class="section-title">
-                🚗 TBN 교통방송
-                <span style="font-size: 0.7em;">(월~금 14:05 ~ 16:05)</span>
-            </h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <a href="sms:%230949?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_2.png" alt="부산TBN" class="card-logo">
-                        <h3>
-                            부산TBN
-                            <span class="card-number">#0949</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%230973?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_3.png" alt="광주TBN" class="card-logo">
-                        <h3>
-                            광주TBN
-                            <span class="card-number">#0973</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%231039?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_4.png" alt="대구TBN" class="card-logo">
-                        <h3>
-                            대구TBN
-                            <span class="card-number">#1039</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%236001?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_5.png" alt="대전TBN" class="card-logo">
-                        <h3>
-                            대전TBN
-                            <span class="card-number">#6001</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%235001?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_6.png" alt="경인TBN" class="card-logo">
-                        <h3>
-                            경인TBN
-                            <span class="card-number">#5001</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%231059?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_7.png" alt="강원TBN" class="card-logo">
-                        <h3>
-                            강원TBN
-                            <span class="card-number">#1059</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%231025?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_8.png" alt="전북TBN" class="card-logo">
-                        <h3>
-                            전북TBN
-                            <span class="card-number">#1025</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%231041?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_9.png" alt="울산TBN" class="card-logo">
-                        <h3>
-                            울산TBN
-                            <span class="card-number">#1041</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%239550?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_10.png" alt="경남TBN" class="card-logo">
-                        <h3>
-                            경남TBN
-                            <span class="card-number">#9550</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%233456?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_11.png" alt="경북TBN" class="card-logo">
-                        <h3>
-                            경북TBN
-                            <span class="card-number">#3456</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%231055?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_12.png" alt="제주TBN" class="card-logo">
-                        <h3>
-                            제주TBN
-                            <span class="card-number">#1055</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="sms:%231033?body=" class="sms-link">
-                        <img src="https://www.tbn.or.kr/images/common/logo_13.png" alt="충북TBN" class="card-logo">
-                        <h3>
-                            충북TBN
-                            <span class="card-number">#1033</span>
-                        </h3>
-                        <button class="btn-request">📱 문자 보내기</button>
-                    </a>
-                </div>
-            </div>
+        <div id="programs-container">
+            <!-- 프로그램들이 JavaScript로 시간순으로 배치됩니다 -->
         </div>
 
         <div class="footer">
-            <p style="color: #ff1493;">💌 민트팬 여러분의 성원이 큰 힘이 됩니다 💌</p>
+            <p style="color: #ff1493; font-size: 1.2em; font-weight: bold; line-height: 1.5;">💌 함께 만드는 라디오,<br class="mobile-br"> 지금 참여해주세요! 💌</p>
             <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
                 클릭하시면 문자 앱이 자동으로 열립니다
             </p>
         </div>
     </div>
+
+    <script>
+        // 현재 시간 가져오기
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const day = now.getDay(); // 0: 일요일, 1-6: 월-토
+            return {
+                totalMinutes: hours * 60 + minutes,
+                isWeekday: day >= 1 && day <= 5
+            };
+        }
+
+        // 프로그램 데이터
+        const programs = {
+            '9am': {
+                title: '9시 프로그램',
+                timeRange: '(09:00 ~ 11:00)',
+                startTime: 9 * 60, // 09:00
+                endTime: 11 * 60,  // 11:00
+                className: 'time-9am',
+                shows: [
+                    {
+                        name: 'KBS 주현미의 러브레터',
+                        number: '#1061',
+                        logo: 'https://programres.kbs.co.kr/r2024-0030/2024/3/20/1710914667050_511371.jpg'
+                    },
+                    {
+                        name: 'SBS 이숙영의 러브FM',
+                        number: '#1035',
+                        logo: 'https://www.tbn.or.kr/images/common/logo_2.png'
+                    }
+                ]
+            },
+            '12pm': {
+                title: '12시 프로그램',
+                timeRange: '(12:05 ~ 13:55)',
+                startTime: 12 * 60, // 12:00
+                endTime: 13 * 60 + 55,  // 13:55
+                className: 'time-12pm',
+                weekdayOnly: true,
+                shows: [
+                    {
+                        name: 'TBN 김효진, 양상국의 12시에 만나요',
+                        number: '#9977',
+                        logo: 'https://www.tbn.or.kr/images/common/logo_2.png'
+                    },
+                    {
+                        name: 'MBC 손태진의 트로트 라디오',
+                        number: '#8001',
+                        timeNote: '(12:20~13:52)',
+                        logo: 'https://img.imbc.com/broad/radio/fm/hurray/v2/setting/homepage/__icsFiles/afieldfile/2022/05/11/B9_640x360.jpg'
+                    }
+                ]
+            },
+            '12pm-weekend': {
+                title: '주말 12시 프로그램',
+                timeRange: '(12:00 ~ 13:55)',
+                startTime: 12 * 60, // 12:00
+                endTime: 13 * 60 + 55,  // 13:55
+                className: 'time-12pm',
+                weekendOnly: true,
+                tbnWeekend12: true
+            },
+            '2pm': {
+                title: '2시 프로그램',
+                timeRange: '(14:05 ~ 16:05)',
+                startTime: 14 * 60, // 14:00
+                endTime: 16 * 60 + 5,   // 16:05
+                className: 'time-2pm',
+                weekdayOnly: true,
+                shows: [
+                    {
+                        name: 'KBS 은가은의 빛나는 트로트',
+                        number: '#1061',
+                        logo: 'https://programres.kbs.co.kr/r2024-0030/2024/3/20/1710914667050_511371.jpg'
+                    },
+                    {
+                        name: 'MBC 박준형 박영진의 2시만세',
+                        number: '#8001',
+                        logo: 'https://img.imbc.com/broad/radio/fm/hurray/v2/setting/homepage/__icsFiles/afieldfile/2022/05/11/B9_640x360.jpg'
+                    },
+                    {
+                        name: '언제나 좋은날 채리입니다',
+                        number: '#9070',
+                        logo: 'https://www.ifm.kr/uploads/files/202402/15/23d1492cb3a87faf207cc2ac91dd9919.png'
+                    }
+                ],
+                tbnStations: true
+            },
+            '2pm-weekend': {
+                title: '주말 2시 프로그램',
+                timeRange: '(14:00 ~ 15:55)',
+                startTime: 14 * 60, // 14:00
+                endTime: 15 * 60 + 55,   // 15:55
+                className: 'time-2pm',
+                weekendOnly: true,
+                tbnWeekend2: true
+            },
+            '6pm': {
+                title: '저녁 6시 프로그램',
+                timeRange: '(17:00 ~ 19:55)',
+                startTime: 17 * 60, // 17:00
+                endTime: 19 * 60 + 55, // 19:55
+                className: 'time-6pm',
+                tbnEvening: true
+            }
+        };
+
+        // TBN 지역 데이터
+        const tbnStations = [
+            { name: '부산TBN', number: '#0949', logo: 'https://www.tbn.or.kr/images/common/logo_2.png' },
+            { name: '광주TBN', number: '#0973', logo: 'https://www.tbn.or.kr/images/common/logo_3.png' },
+            { name: '대구TBN', number: '#1039', logo: 'https://www.tbn.or.kr/images/common/logo_4.png' },
+            { name: '대전TBN', number: '#6001', logo: 'https://www.tbn.or.kr/images/common/logo_5.png' },
+            { name: '경인TBN', number: '#5001', logo: 'https://www.tbn.or.kr/images/common/logo_6.png' },
+            { name: '강원TBN', number: '#1059', logo: 'https://www.tbn.or.kr/images/common/logo_7.png' },
+            { name: '전북TBN', number: '#1025', logo: 'https://www.tbn.or.kr/images/common/logo_8.png' },
+            { name: '울산TBN', number: '#1041', logo: 'https://www.tbn.or.kr/images/common/logo_9.png' },
+            { name: '경남TBN', number: '#9550', logo: 'https://www.tbn.or.kr/images/common/logo_10.png' },
+            { name: '경북TBN', number: '#3456', logo: 'https://www.tbn.or.kr/images/common/logo_11.png' },
+            { name: '제주TBN', number: '#1055', logo: 'https://www.tbn.or.kr/images/common/logo_12.png' },
+            { name: '충북TBN', number: '#1033', logo: 'https://www.tbn.or.kr/images/common/logo_13.png' }
+        ];
+
+        // TBN 주말 12시 프로그램
+        const tbnWeekend12Programs = [
+            { name: 'TBN 차차차', station: '부산TBN', number: '#0949', logo: 'https://www.tbn.or.kr/images/common/logo_2.png' },
+            { name: '펀펀트롯', station: '광주TBN', number: '#0973', logo: 'https://www.tbn.or.kr/images/common/logo_3.png' },
+            { name: '홍지영의 주말엔12시', station: '경인TBN', number: '#5001', logo: 'https://www.tbn.or.kr/images/common/logo_6.png' },
+            { name: '주말의 친한친구', station: '강원TBN', number: '#1059', logo: 'https://www.tbn.or.kr/images/common/logo_7.png' },
+            { name: 'TBN 차차차', station: '전북TBN', number: '#1025', logo: 'https://www.tbn.or.kr/images/common/logo_8.png' },
+            { name: '주말, 열두시에 만나요', station: '경북TBN', number: '#3456', logo: 'https://www.tbn.or.kr/images/common/logo_11.png' },
+            { name: 'TBN 차차차', station: '제주TBN', number: '#1055', logo: 'https://www.tbn.or.kr/images/common/logo_12.png' }
+        ];
+
+        // TBN 주말 2시 프로그램
+        const tbnWeekend2Programs = [
+            { name: 'TBN 차차차', station: '대구TBN', number: '#1039', logo: 'https://www.tbn.or.kr/images/common/logo_4.png' },
+            { name: '오후의 발견', station: '울산TBN', number: '#1041', logo: 'https://www.tbn.or.kr/images/common/logo_9.png' },
+            { name: '두시의 트롯팡팡', station: '경남TBN', number: '#9550', logo: 'https://www.tbn.or.kr/images/common/logo_10.png' },
+            { name: '트로트 하이웨이', station: '충남TBN', number: '#1033', logo: 'https://www.tbn.or.kr/images/common/logo_13.png' }
+        ];
+
+        // 카드 생성 함수
+        function createCard(show) {
+            const displayName = show.station ? `${show.name} (${show.station})` : show.name;
+            return `
+                <div class="card">
+                    <a href="sms:${show.number.replace('#', '%23')}?body=" class="sms-link">
+                        <img src="${show.logo}" alt="${displayName}" class="card-logo">
+                        <h3>
+                            ${displayName}
+                            ${show.timeNote ? '<br><span style="font-size:0.8em;color:#999;">' + show.timeNote + '</span>' : ''}
+                            <span class="card-number">${show.number}</span>
+                        </h3>
+                        <button class="btn-request">📱 문자 보내기</button>
+                    </a>
+                </div>
+            `;
+        }
+
+        // 프로그램 섹션 생성 함수
+        function createProgramSection(key, program, isLive) {
+            const sectionClass = isLive ? 'on-air-section' : 'section';
+            let html = `<div class="${sectionClass} ${program.className}">`;
+            
+            // ON AIR 배지 (방송 중일 때만)
+            if (isLive) {
+                html += `<div class="on-air-badge">ON AIR</div>`;
+            }
+            
+            // 시간대 헤더
+            html += `
+                <div class="time-slot-header">
+                    <h2>
+                        ${program.title}
+                        <span class="time-badge">${program.timeRange}</span>
+                    </h2>
+                </div>
+            `;
+            
+            // 메시지 입력 안내 (2시 프로그램만)
+            if (key === '2pm') {
+                html += `
+                    <p class="message-instruction">
+                        💬 <strong style="color: #ff1493; font-size: 1.05em;">메시지를 직접 입력해 주세요</strong>
+                    </p>
+                `;
+            }
+            
+            html += `<div class="cards-grid">`;
+
+            // 일반 프로그램
+            if (program.shows) {
+                program.shows.forEach(show => {
+                    html += createCard(show);
+                });
+            }
+
+            // TBN 주말 12시 프로그램
+            if (program.tbnWeekend12) {
+                tbnWeekend12Programs.forEach(show => {
+                    html += createCard(show);
+                });
+            }
+
+            // TBN 주말 2시 프로그램
+            if (program.tbnWeekend2) {
+                tbnWeekend2Programs.forEach(show => {
+                    html += createCard(show);
+                });
+            }
+
+            // TBN 2시 방송국들 (평일)
+            if (program.tbnStations) {
+                html += `</div>
+                <div class="time-slot-header" style="margin-top: 30px;">
+                    <h2>
+                        🚗 TBN 교통방송
+                        <span class="time-badge">(월~금 14:05 ~ 16:05)</span>
+                    </h2>
+                </div>
+                <div class="cards-grid">`;
+                
+                tbnStations.forEach(station => {
+                    html += createCard(station);
+                });
+            }
+
+            // TBN 저녁 달리는 라디오
+            if (program.tbnEvening) {
+                html += `</div>
+                <h3 style="color: #333; margin: 20px 0 15px 0; font-size: 1.2em; background: white; padding: 12px 20px; border-radius: 10px; display: inline-block;">
+                    경인, 경북 달리는 라디오 <span style="color: #999; font-size: 0.8em;">(17:00~18:52)</span>
+                </h3>
+                <div class="cards-grid">`;
+                
+                // 경인, 경북만
+                const eveningStations1 = tbnStations.filter(s => s.name === '경인TBN' || s.name === '경북TBN');
+                eveningStations1.forEach(station => {
+                    html += createCard(station);
+                });
+
+                html += `</div>
+                <h3 style="color: #333; margin: 20px 0 15px 0; font-size: 1.2em; background: white; padding: 12px 20px; border-radius: 10px; display: inline-block;">
+                    그 외 달리는 라디오 <span style="color: #999; font-size: 0.8em;">(18:05~19:55)</span>
+                </h3>
+                <div class="cards-grid">`;
+
+                // 나머지 지역
+                const eveningStations2 = tbnStations.filter(s => s.name !== '경인TBN' && s.name !== '경북TBN');
+                eveningStations2.forEach(station => {
+                    html += createCard(station);
+                });
+            }
+
+            html += `</div></div>`;
+            return html;
+        }
+
+        // 페이지 렌더링
+        function renderPrograms() {
+            const timeInfo = getCurrentTime();
+            const currentTime = timeInfo.totalMinutes;
+            const isWeekday = timeInfo.isWeekday;
+            const container = document.getElementById('programs-container');
+            
+            // 방송 중인 프로그램 찾기
+            let liveProgram = null;
+            let liveKey = null;
+            
+            for (const [key, program] of Object.entries(programs)) {
+                // 평일 전용 프로그램은 주말에 스킵
+                if (program.weekdayOnly && !isWeekday) continue;
+                // 주말 전용 프로그램은 평일에 스킵
+                if (program.weekendOnly && isWeekday) continue;
+                
+                if (currentTime >= program.startTime && currentTime <= program.endTime) {
+                    liveProgram = program;
+                    liveKey = key;
+                    break;
+                }
+            }
+
+            let html = '';
+
+            // 방송 중인 프로그램을 맨 위에
+            if (liveProgram) {
+                html += createProgramSection(liveKey, liveProgram, true);
+            }
+
+            // 나머지 프로그램들을 시간순으로
+            const programOrder = isWeekday 
+                ? ['9am', '12pm', '2pm', '6pm'] 
+                : ['9am', '12pm-weekend', '2pm-weekend', '6pm'];
+            
+            programOrder.forEach(key => {
+                if (key !== liveKey && programs[key]) {
+                    // 평일 전용 프로그램은 주말에 표시 안 함
+                    if (programs[key].weekdayOnly && !isWeekday) return;
+                    // 주말 전용 프로그램은 평일에 표시 안 함
+                    if (programs[key].weekendOnly && isWeekday) return;
+                    
+                    html += createProgramSection(key, programs[key], false);
+                }
+            });
+
+            container.innerHTML = html;
+        }
+
+        // 페이지 로드 시 실행
+        renderPrograms();
+
+        // 1분마다 업데이트
+        setInterval(renderPrograms, 60000);
+    </script>
 </body>
 </html>
