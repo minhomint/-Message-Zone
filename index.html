@@ -599,6 +599,12 @@
         </div>
     </div>
 
+
+    <!-- Footer Credit -->
+    <div style="text-align: center; padding: 30px 20px; margin-top: 50px; color: #999; font-size: 0.9em; border-top: 1px solid #e0e0e0;">
+        Made by <strong style="color: #4ecdc4;">민호특공대</strong> 💙
+    </div>
+
     <script>
         // 현재 시간 가져오기
         function getCurrentTime() {
@@ -757,7 +763,7 @@
             const displayName = show.station ? `${show.name} (${show.station})` : show.name;
             return `
                 <div class="card">
-                    <a href="sms:${show.number.replace('#', '%23')}?body=" class="sms-link">
+                    <a href="sms:${show.number.replace('#', '%23')}?body=장민호%20[곡명]%20신청합니다" class="sms-link">
                         <img src="${show.logo}" alt="${displayName}" class="card-logo">
                         <h3>
                             ${displayName}
