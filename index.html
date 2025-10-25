@@ -652,7 +652,7 @@
                 weekdayOnly: true,
                 shows: [
                     {
-                        name: 'TBN 김효진, 양상국의 12시에 만나요',
+                        name: 'tbn김효진, 양상국의 12시에 만나요',
                         number: '#9977',
                         logo: 'https://www.tbn.or.kr/file/broadcast/image/20230102/16726466370832.jpg'
                     },
@@ -724,42 +724,58 @@
                 className: 'time-6pm',
                 weekdayOnly: true,
                 tbnEvening: true
+            },
+            '8pm': {
+                title: '저녁 8시 프로그램',
+                timeRange: '(20:00 ~ 21:55)',
+                startTime: 20 * 60, // 20:00
+                endTime: 21 * 60 + 55, // 21:55
+                className: 'time-8pm',
+                weekdayOnly: true,
+                shows: [
+                    {
+                        name: 'tbn김승현의 가요본색',
+                        number: '#9977',
+                        timeNote: '(월~금)',
+                        logo: 'https://i.namu.wiki/i/DrbHwrmOHxmGIaAZxMAB0GlPBtppKmvnxam7zllIfjRql__RdeNpGrgum506-8J9Or-BTKx5QiogYmYVN4We3A.webp'
+                    }
+                ]
             }
         };
 
-        // TBN 지역 데이터
+        // tbn 지역 데이터
         const tbnStations = [
-            { name: '부산TBN', number: '#0949', logo: 'https://www.tbn.or.kr/images/common/logo_2.png' },
-            { name: '광주TBN', number: '#0973', logo: 'https://www.tbn.or.kr/images/common/logo_3.png' },
-            { name: '대구TBN', number: '#1039', logo: 'https://www.tbn.or.kr/images/common/logo_4.png' },
-            { name: '대전TBN', number: '#6001', logo: 'https://www.tbn.or.kr/images/common/logo_5.png' },
-            { name: '경인TBN', number: '#5001', logo: 'https://www.tbn.or.kr/images/common/logo_6.png' },
-            { name: '강원TBN', number: '#1059', logo: 'https://www.tbn.or.kr/images/common/logo_7.png' },
-            { name: '전북TBN', number: '#1025', logo: 'https://www.tbn.or.kr/images/common/logo_8.png' },
-            { name: '울산TBN', number: '#1041', logo: 'https://www.tbn.or.kr/images/common/logo_9.png' },
-            { name: '경남TBN', number: '#9550', logo: 'https://www.tbn.or.kr/images/common/logo_10.png' },
-            { name: '경북TBN', number: '#3456', logo: 'https://www.tbn.or.kr/images/common/logo_11.png' },
-            { name: '제주TBN', number: '#1055', logo: 'https://www.tbn.or.kr/images/common/logo_12.png' },
-            { name: '충북TBN', number: '#1033', logo: 'https://www.tbn.or.kr/images/common/logo_13.png' }
+            { name: '부산tbn', number: '#0949', logo: 'https://www.tbn.or.kr/images/common/logo_2.png' },
+            { name: '광주tbn', number: '#0973', logo: 'https://www.tbn.or.kr/images/common/logo_3.png' },
+            { name: '대구tbn', number: '#1039', logo: 'https://www.tbn.or.kr/images/common/logo_4.png' },
+            { name: '대전tbn', number: '#6001', logo: 'https://www.tbn.or.kr/images/common/logo_5.png' },
+            { name: '경인tbn', number: '#5001', logo: 'https://www.tbn.or.kr/images/common/logo_6.png' },
+            { name: '강원tbn', number: '#1059', logo: 'https://www.tbn.or.kr/images/common/logo_7.png' },
+            { name: '전북tbn', number: '#1025', logo: 'https://www.tbn.or.kr/images/common/logo_8.png' },
+            { name: '울산tbn', number: '#1041', logo: 'https://www.tbn.or.kr/images/common/logo_9.png' },
+            { name: '경남tbn', number: '#9550', logo: 'https://www.tbn.or.kr/images/common/logo_10.png' },
+            { name: '경북tbn', number: '#3456', logo: 'https://www.tbn.or.kr/images/common/logo_11.png' },
+            { name: '제주tbn', number: '#1055', logo: 'https://www.tbn.or.kr/images/common/logo_12.png' },
+            { name: '충북tbn', number: '#1033', logo: 'https://www.tbn.or.kr/images/common/logo_13.png' }
         ];
 
-        // TBN 주말 12시 프로그램
+        // tbn 주말 12시 프로그램
         const tbnWeekend12Programs = [
-            { name: 'TBN 차차차', station: '부산TBN', number: '#0949', logo: 'https://www.tbn.or.kr/images/common/logo_2.png' },
-            { name: '펀펀트롯', station: '광주TBN', number: '#0973', logo: 'https://www.tbn.or.kr/images/common/logo_3.png' },
-            { name: '홍지영의 주말엔12시', station: '경인TBN', number: '#5001', logo: 'https://www.tbn.or.kr/images/common/logo_6.png' },
-            { name: '주말의 친한친구', station: '강원TBN', number: '#1059', logo: 'https://www.tbn.or.kr/images/common/logo_7.png' },
-            { name: 'TBN 차차차', station: '전북TBN', number: '#1025', logo: 'https://www.tbn.or.kr/images/common/logo_8.png' },
-            { name: '주말, 열두시에 만나요', station: '경북TBN', number: '#3456', logo: 'https://www.tbn.or.kr/images/common/logo_11.png' },
-            { name: 'TBN 차차차', station: '제주TBN', number: '#1055', logo: 'https://www.tbn.or.kr/images/common/logo_12.png' }
+            { name: 'tbn차차차', station: '부산tbn', number: '#0949', logo: 'https://www.tbn.or.kr/images/common/logo_2.png' },
+            { name: '펀펀트롯', station: '광주tbn', number: '#0973', logo: 'https://www.tbn.or.kr/images/common/logo_3.png' },
+            { name: '홍지영의 주말엔12시', station: '경인tbn', number: '#5001', logo: 'https://www.tbn.or.kr/images/common/logo_6.png' },
+            { name: '주말의 친한친구', station: '강원tbn', number: '#1059', logo: 'https://www.tbn.or.kr/images/common/logo_7.png' },
+            { name: 'tbn차차차', station: '전북tbn', number: '#1025', logo: 'https://www.tbn.or.kr/images/common/logo_8.png' },
+            { name: '주말, 열두시에 만나요', station: '경북tbn', number: '#3456', logo: 'https://www.tbn.or.kr/images/common/logo_11.png' },
+            { name: 'tbn차차차', station: '제주tbn', number: '#1055', logo: 'https://www.tbn.or.kr/images/common/logo_12.png' }
         ];
 
-        // TBN 주말 2시 프로그램
+        // tbn 주말 2시 프로그램
         const tbnWeekend2Programs = [
-            { name: 'TBN 차차차', station: '대구TBN', number: '#1039', logo: 'https://www.tbn.or.kr/images/common/logo_4.png' },
-            { name: '오후의 발견', station: '울산TBN', number: '#1041', logo: 'https://www.tbn.or.kr/images/common/logo_9.png' },
-            { name: '두시의 트롯팡팡', station: '경남TBN', number: '#9550', logo: 'https://www.tbn.or.kr/images/common/logo_10.png' },
-            { name: '트로트 하이웨이', station: '충남TBN', number: '#1033', logo: 'https://www.tbn.or.kr/images/common/logo_13.png' }
+            { name: 'tbn차차차', station: '대구tbn', number: '#1039', logo: 'https://www.tbn.or.kr/images/common/logo_4.png' },
+            { name: '오후의 발견', station: '울산tbn', number: '#1041', logo: 'https://www.tbn.or.kr/images/common/logo_9.png' },
+            { name: '두시의 트롯팡팡', station: '경남tbn', number: '#9550', logo: 'https://www.tbn.or.kr/images/common/logo_10.png' },
+            { name: '트로트 하이웨이', station: '충남tbn', number: '#1033', logo: 'https://www.tbn.or.kr/images/common/logo_13.png' }
         ];
 
         // 카드 생성 함수
@@ -818,26 +834,26 @@
                 });
             }
 
-            // TBN 주말 12시 프로그램
+            // tbn 주말 12시 프로그램
             if (program.tbnWeekend12) {
                 tbnWeekend12Programs.forEach(show => {
                     html += createCard(show);
                 });
             }
 
-            // TBN 주말 2시 프로그램
+            // tbn 주말 2시 프로그램
             if (program.tbnWeekend2) {
                 tbnWeekend2Programs.forEach(show => {
                     html += createCard(show);
                 });
             }
 
-            // TBN 2시 방송국들 (평일)
+            // tbn 2시 방송국들 (평일)
             if (program.tbnStations) {
                 html += `</div>
                 <div class="time-slot-header" style="margin-top: 30px;">
                     <h2>
-                        🚗 TBN 교통방송
+                        🚗 tbn 교통방송
                         <span class="time-badge">(월~금 14:05 ~ 16:05)</span>
                     </h2>
                 </div>
@@ -848,7 +864,7 @@
                 });
             }
 
-            // TBN 저녁 달리는 라디오
+            // tbn 저녁 달리는 라디오
             if (program.tbnEvening) {
                 html += `</div>
                 <h3 style="color: #333; margin: 20px 0 15px 0; font-size: 1.2em; background: white; padding: 12px 20px; border-radius: 10px; display: inline-block;">
@@ -857,7 +873,7 @@
                 <div class="cards-grid">`;
                 
                 // 경인, 경북만
-                const eveningStations1 = tbnStations.filter(s => s.name === '경인TBN' || s.name === '경북TBN');
+                const eveningStations1 = tbnStations.filter(s => s.name === '경인tbn' || s.name === '경북tbn');
                 eveningStations1.forEach(station => {
                     html += createCard(station);
                 });
@@ -869,7 +885,7 @@
                 <div class="cards-grid">`;
 
                 // 나머지 지역
-                const eveningStations2 = tbnStations.filter(s => s.name !== '경인TBN' && s.name !== '경북TBN');
+                const eveningStations2 = tbnStations.filter(s => s.name !== '경인tbn' && s.name !== '경북tbn');
                 eveningStations2.forEach(station => {
                     html += createCard(station);
                 });
@@ -912,7 +928,7 @@
 
             // 나머지 프로그램들을 시간순으로
             const programOrder = isWeekday 
-                ? ['9am', '12pm', '2pm', '6pm'] 
+                ? ['9am', '12pm', '2pm', '6pm', '8pm'] 
                 : ['9am', '12pm-weekend', '2pm-weekend', '6pm'];
             
             programOrder.forEach(key => {
